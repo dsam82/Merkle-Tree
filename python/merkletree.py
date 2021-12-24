@@ -1,8 +1,20 @@
+'''
+Author: dsam82 [http://github.com/dsam82]
+Source: [https://github.com/droid76/Merkle-Tree]
+'''
+
 import hashlib, sys
 
 def getHash(value):
 	return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
+'''
+Class: MerkleTreeNode
+Right Node -> NULL
+Left Node -> NULL
+Value
+Hash Value
+'''
 class MerkleTreeNode:
 	def __init__(self, value, left=None, right=None):
 		self.right = left
@@ -10,6 +22,10 @@ class MerkleTreeNode:
 		self.value = value
 		self.hashValue = getHash(value)
 
+
+'''
+Build Simple Bunary Merkle Tree and saves nodes in file
+'''
 def buildMerkleTree(lines, outfile):
 	leaves = []
 	for line in lines:
