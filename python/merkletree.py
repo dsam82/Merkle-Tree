@@ -20,9 +20,9 @@ class MerkleTree:
 		assert isinstance(txs, list), "txs not a list"
 		self._leaves = txs
 		self._nodes = []
+		self._outfile = outfile
 		self._root = self._buildMerkleTree()
 		self._block_header = self._root.hashValue
-		self._outfile = outfile
 
 	'''
 	Builds Simple Binary Merkle Tree and saves nodes in file
@@ -47,7 +47,7 @@ class MerkleTree:
 				self._outfile.write("Right Child -> value: %s, hash: %s\n" % (rightChild.value, rightChild.hashValue))
 
 				parentValue = leftChild.hashValue + rightChild.hashValue
-				parentNode = MerkleTreeNode(parentValue, leftChild, rightChild)
+				parentNode = MerkleTreeNode(parentValue, leftChild.hashValue, rightChild.hashValue)
 				self._outfile.write("Parent created -> value: %s, hash: %s\n" % (parentNode.value, parentNode.hashValue))
 
 				temp.append(parentNode)

@@ -9,8 +9,8 @@ Class: MerkleTreeNode
 '''
 class MerkleTreeNode:
 	def __init__(self, value, left=None, right=None):
-		self._right = left
-		self._left = right
+		self._right = right
+		self._left = left
 		self._value = value
 		self._hashValue = self._evaluate()
 
