@@ -1,13 +1,13 @@
 from utils import getHash
 
-'''
-Class: MerkleTreeNode
-@property Right Node -> NULL
-@property Left Node -> NULL
-@property Value
-@property Hash Value
-'''
 class MerkleTreeNode:
+	'''
+	Class: MerkleTreeNode
+	@property Right Node -> NULL
+	@property Left Node -> NULL
+	@property Value
+	@property Hash Value
+	'''
 	def __init__(self, value, left=None, right=None):
 		self._right = right
 		self._left = left
