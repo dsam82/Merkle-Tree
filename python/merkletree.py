@@ -6,15 +6,15 @@ Source:
 '''
 
 import sys
-from TreeNode import MerkleTreeNode
+from python.merkletreenode import MerkleTreeNode
 
 
-'''
-Merkle Tree implementation with default hash function sha256
-Arbitrary amount of nodes can be added, in consequence of which
-tree will be reconstructed by appending the new txs into the current txs
-'''
 class MerkleTree:
+	'''
+	Merkle Tree implementation with default hash function sha256
+	Arbitrary amount of nodes can be added, in consequence of which
+	tree will be reconstructed by appending the new txs into the current txs
+	'''
 	def __init__(self, txs, outfile):
 		assert txs, "No transaction to be hashed"
 		assert isinstance(txs, list), "txs not a list"
@@ -24,10 +24,10 @@ class MerkleTree:
 		self._root = self._buildMerkleTree()
 		self._block_header = self._root.hashValue
 
-	'''
-	Builds Simple Binary Merkle Tree and saves nodes in file
-	'''
 	def _buildMerkleTree(self):
+		'''
+		Builds Simple Binary Merkle Tree and saves nodes in file
+		'''
 		leaves = []
 		for leaf in self._leaves:
 			leaves.append(MerkleTreeNode(leaf))
@@ -65,19 +65,19 @@ class MerkleTree:
 		self._leaves.append(new_txs)
 		self._add_to_tree()
 
-	'''Return tree's txs list'''
 	@property
 	def leaves(self):
+		'''Return tree's txs list'''
 		return self._leaves
 
-	'''Return tree root'''
 	@property
 	def root(self):
+		'''Return tree root'''
 		return self._root
 
-	'''Return tree root's hash value'''
 	@property
 	def block_header(self):
+		'''Return tree root's hash value'''
 		return self._block_header
 
 
